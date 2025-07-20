@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERNACH EVENT HALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'BankGothic';
+            src: url('https://db.onlinewebfonts.com/t/5b0ba2e20d3d7e3fc30b60595f3702c2.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .logo-font {
+            font-family: 'BankGothic', sans-serif;
+            letter-spacing: 1px;
+        }
+        .content-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23222222'/%3E%3Cstop offset='1' stop-color='%23222222' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='1200' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23111111'/%3E%3Cstop offset='1' stop-color='%23111111' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='c' cx='600' cy='0' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23333333'/%3E%3Cstop offset='1' stop-color='%23333333' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' width='1200' height='800'/%3E%3Crect fill='url(%23c)' width='1200' height='800'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        .package-card {
+            transition: all 0.3s ease;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            height: 250px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gold-text {
+            color: #D4AF37;
+        }
+        .gold-bg {
+            background-color: #D4AF37;
+        }
+        .gold-border {
+            border-color: #D4AF37;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F2D675 50%, #D4AF37 100%);
+        }
+    </style>
+</head>
+<body class="content-font bg-white">
+    <!-- Barra de navegación -->
+    <nav class="bg-black text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="logo-font text-3xl font-bold tracking-wider flex items-center" onclick="scrollToSection('inicio')">
+                    <span style="color: #D4AF37;">PERNACH</span> <span class="text-white ml-2">EVENT HALL</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-yellow-500 transition duration-300">Inicio</a>
+                    <a href="#servicios" class="hover:text-yellow-500 transition duration-300">Servicios</a>
+                    <a href="#contacto" class="hover:text-yellow-500 transition duration-300">Contacto</a>
+                    <a href="#nosotros" class="hover:text-yellow-500 transition duration-300">Nosotros</a>
+                    <a href="#galeria" class="hover:text-yellow-500 transition duration-300">Galería</a>
+                </div>
+                <a href="https://wa.me/525517792417" target="_blank" style="background-color: #D4AF37;" class="hover:bg-yellow-600 text-black px-4 py-2 rounded-full flex items-center transition duration-300">
+                    <i class="fab fa-whatsapp mr-2"></i> Contáctanos
+                </a>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="#inicio" class="block py-2 hover:text-yellow-500 transition duration-300">Inicio</a>
+                <a href="#servicios" class="block py-2 hover:text-yellow-500 transition duration-300">Servicios</a>
+                <a href="#contacto" class="block py-2 hover:text-yellow-500 transition duration-300">Contacto</a>
+                <a href="#nosotros" class="block py-2 hover:text-yellow-500 transition duration-300">Nosotros</a>
+                <a href="#galeria" class="block py-2 hover:text-yellow-500 transition duration-300">Galería</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="hero-section min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold logo-font mb-6"><span style="color: #D4AF37;">PERNACH</span> <span class="text-white">EVENT HALL</span></h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">El lugar perfecto para celebrar tus momentos más especiales. Hacemos realidad cualquier sueño.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#servicios" style="background-color: #D4AF37;" class="hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition duration-300 text-lg">
+                    Ver Paquetes
+                </a>
+                <a href="#contacto" class="bg-transparent hover:bg-white hover:text-black text-white font-bold py-3 px-8 rounded-full border-2 border-white transition duration-300 text-lg">
+                    Contáctanos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">Nuestros Paquetes</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Ofrecemos diferentes opciones para adaptarnos a tus necesidades y presupuesto.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                <!-- Paquete Bronce -->
+                <div class="package-card bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D4AF37;">Bronce</h3>
+                        <div class="text-center mb-6">
+                            <span class="text-3xl font-bold" style="color: #D4AF37;">$10,000</span>
+                        </div>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Salón por 5 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Mesas y sillas para 50 personas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Equipo de sonido básico</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Iluminación estándar</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#contacto" style="background-color: #D4AF37;" class="inline-block hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">
+                                Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paquete Especial -->
+                <div class="package-card bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D4AF37;">Especial</h3>
+                        <div class="text-center mb-6">
+                            <span class="text-3xl font-bold" style="color: #D4AF37;">$15,000</span>
+                        </div>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Salón por 6 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Mesas y sillas para 80 personas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Equipo de sonido con micrófono</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Decoración básica</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#contacto" style="background-color: #D4AF37;" class="inline-block hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">
+                                Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paquete Oro -->
+                <div class="package-card bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D4AF37;">Oro</h3>
+                        <div class="text-center mb-6">
+                            <span class="text-3xl font-bold" style="color: #D4AF37;">$20,000</span>
+                        </div>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Salón por 8 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Mesas y sillas para 100 personas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>DJ profesional por 4 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Decoración temática</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#contacto" style="background-color: #D4AF37;" class="inline-block hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">
+                                Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paquete Platino -->
+                <div class="package-card bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D4AF37;">Platino</h3>
+                        <div class="text-center mb-6">
+                            <span class="text-3xl font-bold" style="color: #D4AF37;">$30,000</span>
+                        </div>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Salón por 10 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Mesas y sillas para 150 personas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>DJ profesional por 6 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Buffet para todos los invitados</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#contacto" style="background-color: #D4AF37;" class="inline-block hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">
+                                Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paquete Diamante -->
+                <div class="package-card bg-gradient-to-b from-gray-800 to-black rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: #D4AF37;">Diamante</h3>
+                        <div class="text-center mb-6">
+                            <span class="text-3xl font-bold" style="color: #D4AF37;">$45,000</span>
+                        </div>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Salón por 12 horas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Mesas y sillas para 200 personas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>DJ, show de luces y pista LED</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2" style="color: #D4AF37;"></i>
+                                <span>Buffet premium y barra libre</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="#contacto" style="background-color: #D4AF37;" class="inline-block hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">
+                                Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">Contacto</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">¿Tienes alguna pregunta? ¡Contáctanos y te responderemos a la brevedad!</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6">Información de Contacto</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-yellow-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Correo Electrónico</p>
+                                    <p class="font-medium">1hasl9@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-yellow-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Teléfono</p>
+                                    <p class="font-medium">5517792417</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-yellow-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Ubicación</p>
+                                    <p class="font-medium">México Estado de Mexico Tecamac 55770 Ojo de Agua San pedro Atzompa Calle Cipres (Hasta topar con pared)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-yellow-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Horario de Atención</p>
+                                    <p class="font-medium">Lunes a Sábado: 10:00 AM - 8:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-xl font-bold mb-4">Síguenos en redes sociales</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/pernachevents?igsh=Y3huZW83ZHZmd25i&utm_source=qr" target="_blank" class="bg-gradient-to-r from-yellow-500 to-yellow-700 text-white p-3 rounded-full hover:from-yellow-600 hover:to-yellow-800 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://wa.me/525517792417" target="_blank" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition duration-300">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-yellow-700">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6">Galería de Fotos</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <!-- Imágenes precargadas usando SVGs elegantes -->
+                            <div class="rounded-lg h-32 overflow-hidden">
+                               <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"> 
+                             <!-- LOGOPERNACH -->
+  <image href="https://i.postimg.cc/NMfsMBdr/FONDOPERNACH.jpg" x="0" y="0" width="200" height="150" />
+   <text x="100" y="120" font-family="Arial" font-size="12" fill="white" text-anchor="middle">LOGO</text>
+</svg>
+                            <!--BODAS-->
+
+                            </div>
+                            <div class="rounded-lg h-32 overflow-hidden">
+                                <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                                   <image href="https://i.postimg.cc/kgKXYjVD/bodas.jpg" x="0" y="0" width="200" height="150" />
+                                    <text x="100" y="115" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Boda de Lujo</text>
+                                </svg>
+                            </div>
+
+                            <!-- XVAÑOS-->
+                           <div class="rounded-lg h-32 overflow-hidden">
+  <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+    <!-- Imagen de fondo -->
+    <image href="https://i.postimg.cc/mkPTYVfL/xva-os.jpg" x="0" y="0" width="200" height="150" />
+     <text x="100" y="120" font-family="Arial" font-size="12" fill="gold" text-anchor="middle">XVAÑOS</text>
+  </svg>
+</div>
+                            <!--CORPORATIVOS-->
+
+                            <div class="rounded-lg h-32 overflow-hidden">
+                                <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                                    <image href="https://i.postimg.cc/xTW1Rr1W/eventos.jpg" x="0" y="0" width="200" height="150" />
+                                    <text x="100" y="120" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Corporativo</text>
+                                </svg>
+                            </div>
+                                                        <!--CUMPLEAÑOS-->
+                            <div class="rounded-lg h-32 overflow-hidden">
+                                <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                                    <image href="https://i.postimg.cc/XvWNRwFL/cumplea-os.jpg" x="0" y="0" width="200" height="150" />
+                                    <text x="100" y="115" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Cumpleaños</text>
+                                </svg>
+                            </div>
+                                                        <!--GRADUACIONES-->
+
+                            <div class="rounded-lg h-32 overflow-hidden">
+                                <svg class="w-full h-full" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+                                   <image href="https://i.postimg.cc/xCx0NhZp/graduacion.jpg" x="0" y="0" width="200" height="150" />
+                                    <text x="100" y="85" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Graduación</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Nosotros -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">Nosotros</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Conoce más sobre <span style="color: #D4AF37;" class="logo-font">PERNACH</span> EVENT HALL</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">Nuestra Visión</h3>
+                    <p class="text-lg text-gray-700 mb-6">
+                        En PERNACH EVENT HALL, nos dedicamos a hacer realidad cualquier sueño. Creemos que cada celebración es única y merece un espacio que refleje la personalidad y deseos de nuestros clientes.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-8">
+                        Con años de experiencia en la organización de eventos, nuestro equipo está comprometido a brindar un servicio excepcional y crear momentos inolvidables para todas las ocasiones especiales.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-yellow-50 rounded-lg p-4 flex-1 min-w-[200px] border border-yellow-700">
+                            <h4 class="font-bold text-xl mb-2" style="color: #D4AF37;">Misión</h4>
+                            <p class="text-gray-700">Proporcionar el espacio perfecto para que nuestros clientes celebren los momentos más importantes de sus vidas.</p>
+                        </div>
+                        <div class="bg-yellow-50 rounded-lg p-4 flex-1 min-w-[200px] border border-yellow-700">
+                            <h4 class="font-bold text-xl mb-2" style="color: #D4AF37;">Valores</h4>
+                            <p class="text-gray-700">Excelencia, compromiso, creatividad y atención personalizada en cada evento.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="https://www.google.com/maps/place/19%C2%B041'10.0%22N+99%C2%B002'07.9%22W/@19.6861746,-99.035774,3a,75y,93.61h,100.37t/data=!3m7!1e1!3m5!1s6LjOjYm_BbjsIFtZYUnw_g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-10..%26panoid%3D6LjOjYm_BbjsIFtZYUnw_g%26yaw%3D93..!7i16384!8i8192!4m4!3m3!8m2!3d19.686111!4d-99.03553?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 border border-yellow-700">
+                        <div class="relative">
+                            <svg class="w-full h-64" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="200" fill="#e4e4e7" />
+                                <path d="M200,50 C170,50 150,70 150,100 C150,130 200,170 200,170 C200,170 250,130 250,100 C250,70 230,50 200,50 Z" fill="#D4AF37" />
+                                <circle cx="200" cy="100" r="15" fill="#ffffff" />
+                            </svg>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                                <h4 class="font-bold text-xl text-white mb-2">Nuestra Ubicación</h4>
+                                <p class="text-white mb-4">Ver en Google Maps</p>
+                                <div class="bg-yellow-100 text-black p-3 rounded-lg text-sm">
+                                    <p class="font-bold">Nota importante:</p>
+                                    <p>Las imágenes de Google Maps aún no se encuentran actualizadas, consulta la sección de galería para conocer cómo se ve realmente!!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería -->
+    <section id="galeria" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">Galería</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Explora nuestros eventos anteriores y déjate inspirar para tu próxima celebración.</p>
+            
+            <div class="gallery-container" id="gallery-container">
+                <!-- Imágenes precargadas usando SVGs elegantes -->
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <circle cx="125" cy="80" r="40" fill="#D4AF37" opacity="0.7" />
+                        <rect x="50" y="130" width="150" height="80" rx="5" fill="#333" />
+                        <text x="125" y="180" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Salón Principal</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <rect x="40" y="40" width="170" height="100" rx="5" fill="#D4AF37" opacity="0.6" />
+                        <rect x="60" y="160" width="130" height="50" rx="5" fill="#333" />
+                        <text x="125" y="190" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Área de Banquete</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <polygon points="125,40 175,90 125,140 75,90" fill="#D4AF37" opacity="0.7" />
+                        <rect x="50" y="160" width="150" height="50" rx="5" fill="#333" />
+                        <text x="125" y="190" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Pista de Baile</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <circle cx="75" cy="75" r="35" fill="#D4AF37" opacity="0.5" />
+                        <circle cx="175" cy="75" r="25" fill="#D4AF37" opacity="0.7" />
+                        <rect x="50" y="160" width="150" height="50" rx="5" fill="#333" />
+                        <text x="125" y="190" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Iluminación Especial</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <rect x="50" y="50" width="150" height="100" rx="5" fill="#D4AF37" opacity="0.6" />
+                        <rect x="75" y="170" width="100" height="40" rx="5" fill="#333" />
+                        <text x="125" y="195" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Área VIP</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <circle cx="125" cy="90" r="50" fill="#D4AF37" opacity="0.7" />
+                        <rect x="60" y="160" width="130" height="50" rx="5" fill="#333" />
+                        <text x="125" y="190" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Decoración Elegante</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <polygon points="50,50 200,50 200,150 50,150" fill="#333" />
+                        <polygon points="75,75 175,75 175,125 75,125" fill="#D4AF37" opacity="0.6" />
+                        <rect x="60" y="170" width="130" height="40" rx="5" fill="#333" />
+                        <text x="125" y="195" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Escenario</text>
+                    </svg>
+                </div>
+                <div class="gallery-item">
+                    <svg class="w-full h-full" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="250" height="250" fill="#111" />
+                        <rect x="40" y="40" width="170" height="120" rx="5" fill="#D4AF37" opacity="0.5" />
+                        <rect x="60" y="180" width="130" height="40" rx="5" fill="#333" />
+                        <text x="125" y="205" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Jardín Exterior</text>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="https://wa.me/525517792417" target="_blank" class="bg-black hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300 border border-yellow-700 inline-block">
+                    Solicitar más fotos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold logo-font mb-4" style="color: #D4AF37;">PERNACH</h3>
+                    <p class="mb-4">El lugar perfecto para celebrar tus momentos más especiales.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/pernachevents?igsh=Y3huZW83ZHZmd25i&utm_source=qr" target="_blank" class="hover:text-yellow-500 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/525517792417" target="_blank" class="hover:text-yellow-500 transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4" style="color: #D4AF37;">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="hover:text-yellow-500 transition duration-300">Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Servicios</a></li>
+                        <li><a href="#contacto" class="hover:text-yellow-500 transition duration-300">Contacto</a></li>
+                        <li><a href="#nosotros" class="hover:text-yellow-500 transition duration-300">Nosotros</a></li>
+                        <li><a href="#galeria" class="hover:text-yellow-500 transition duration-300">Galería</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4" style="color: #D4AF37;">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Paquete Bronce</a></li>
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Paquete Especial</a></li>
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Paquete Oro</a></li>
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Paquete Platino</a></li>
+                        <li><a href="#servicios" class="hover:text-yellow-500 transition duration-300">Paquete Diamante</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4" style="color: #D4AF37;">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2" style="color: #D4AF37;"></i>
+                            <span>1hasl9@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-2" style="color: #D4AF37;"></i>
+                            <span>5517792417</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2" style="color: #D4AF37;"></i>
+                            <span>México Estado de Mexico Tecamac 55770 Ojo de Agua San pedro Atzompa Calle Cipres</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>&copy; 2025 <span style="color: #D4AF37;" class="logo-font">PERNACH</span> EVENT HALL. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Cerrar menú móvil si está abierto
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
